@@ -7,7 +7,7 @@ import { LandingPage } from './pages/LandingPage';
 import { HomePage } from './pages/HomePage';
 import { AdminPage } from './pages/AdminPage';
 
-import { Toaster, toast } from 'sonner';
+import { Toaster } from 'sonner';
 
 function App() {
   const fetchProducts = useStore(state => state.fetchProducts);

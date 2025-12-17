@@ -2,11 +2,11 @@ import { useStore } from '../../../store/useStore';
 import { DollarSign, Package, ShoppingCart, TrendingUp } from 'lucide-react';
 
 export const StatsGrid = () => {
-  const { products, cart, budget } = useStore();
+  const { products, cart } = useStore();
   
   // Cálculos simples para simular métricas
   const totalValue = products.reduce((acc, p) => acc + p.price, 0);
-  const cartValue = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
+  //const cartValue = cart.reduce((acc, i) => acc + (i.price * i.quantity), 0);
 
   const stats = [
     { title: "Total Products", value: products.length, icon: Package, color: "text-blue-500" },

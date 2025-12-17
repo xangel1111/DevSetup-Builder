@@ -1,73 +1,106 @@
-# React + TypeScript + Vite
+# 🚀 DevSetup Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Una aplicación Full Stack para configurar, presupuestar y gestionar estaciones de trabajo para desarrolladores.**
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=3ECF8E)](https://supabase.com/)
+[![Zustand](https://img.shields.io/badge/State-Zustand-orange?style=for-the-badge)](https://github.com/pmndrs/zustand)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🔗 Live Demo
+👉 **[Ver Proyecto Desplegado Aquí](PON_AQUI_TU_LINK_DE_VERCEL)**
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 💡 Sobre el Proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Este proyecto fue desarrollado como una solución técnica para un problema común: la planificación de presupuesto para hardware. La aplicación permite a los usuarios seleccionar componentes, visualizar su presupuesto en tiempo real y a los administradores gestionar el inventario.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+El objetivo principal fue implementar una **arquitectura escalable**, separar la lógica de negocio de la UI y conectar servicios modernos en la nube.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ✨ Características Clave
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* **🛒 Calculadora de Presupuesto en Tiempo Real:** Gestión de estado global con Zustand para calcular remanentes y alertas visuales.
+* **🛡️ Panel de Administración (CRUD):** Interfaz protegida para crear y eliminar productos del inventario.
+* **☁️ Gestión de Imágenes:** Integración con **Cloudinary** para subida y optimización de imágenes.
+* **🗄️ Persistencia de Datos:** Conexión con **Supabase (PostgreSQL)** para sincronización de inventario.
+* **🎨 UI/UX Moderna:** Diseño "Dark Mode First" inspirado en Vercel, utilizando TailwindCSS y componentes modulares.
+
+---
+
+## 🏗️ Arquitectura del Sistema
+
+La aplicación sigue un flujo **Serverless**. El frontend interactúa directamente con los servicios en la nube para maximizar el rendimiento y reducir la latencia.
+
+![Diagrama de Arquitectura](./assets/arquitectura.png)
+
+### Decisiones de Diseño
+
+* **Feature-Based Architecture:** En lugar de agrupar archivos por tipo (components, hooks), el proyecto está organizado por dominios (`features/catalog`, `features/admin`, `features/budget`). Esto facilita la escalabilidad y el mantenimiento.
+* **Zustand vs Context/Redux:** Se eligió Zustand por su simplicidad, menor boilerplate y facilidad para manejar actualizaciones de estado asíncronas fuera del ciclo de renderizado de React.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+* **Frontend Core:** React 18, TypeScript, Vite.
+* **Estilos:** TailwindCSS, clsx, tailwind-merge (para utilidades de clases dinámicas).
+* **Estado:** Zustand (Global Store).
+* **Routing:** React Router DOM v6.
+* **Backend as a Service:** Supabase (PostgreSQL).
+* **Media:** Cloudinary (API de subida de imágenes).
+* **Iconos:** Lucide React.
+* **Notificaciones:** Sonner.
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+src/
+├── api/                 # Configuración de clientes (Supabase/Axios)
+├── features/            # Lógica de Negocio Modular
+│   ├── admin/           # Dashboard y Formularios
+│   ├── budget/          # Lógica del carrito y presupuesto
+│   └── catalog/         # Visualización de productos
+├── components/          # UI Genérica (Layouts, Buttons)
+├── pages/               # Rutas de la aplicación
+├── store/               # Estado Global (Zustand)
+└── types/               # Definiciones TypeScript
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Instalación Local
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Clonar el repositorio:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+```Bash
+git clone [https://github.com/TU_USUARIO/devsetup-builder.git](https://github.com/TU_USUARIO/devsetup-builder.git)
+cd devsetup-builder
+```
+
+### Instalar dependencias:
+
+```Bash
+  npm install
+```
+### Configurar Variables de Entorno: Crea un archivo .env en la raíz y agrega tus credenciales:
+
+Fragmento de código
+
+```text
+VITE_SUPABASE_URL=tu_supabase_url
+VITE_SUPABASE_KEY=tu_supabase_anon_key
+VITE_CLOUDINARY_CLOUD_NAME=tu_cloud_name
+VITE_CLOUDINARY_PRESET=tu_upload_preset
+
+```
+
+### Ejecutar:
+
+```Bash
+npm run dev
 ```
