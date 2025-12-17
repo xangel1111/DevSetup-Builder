@@ -11,7 +11,7 @@
 ---
 
 ## 🔗 Live Demo
-👉 **[Ver Proyecto Desplegado Aquí](PON_AQUI_TU_LINK_DE_VERCEL)**
+👉 **[Ver Proyecto Desplegado Aquí](dev-setup-builder.vercel.app)**
 
 ---
 
@@ -35,7 +35,7 @@ El objetivo principal fue implementar una **arquitectura escalable**, separar la
 
 La aplicación sigue un flujo **Serverless**. El frontend interactúa directamente con los servicios en la nube para maximizar el rendimiento y reducir la latencia.
 
-![Diagrama de Arquitectura](./assets/arquitectura.png)
+![Diagrama de Arquitectura](./src/assets/architecture.png)
 
 ### Decisiones de Diseño
 
