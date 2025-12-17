@@ -6,7 +6,6 @@ export const LandingPage = () => {
     <div className="flex flex-col min-h-[calc(100vh-64px)]">
       {/* Hero Section */}
       <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-20 relative overflow-hidden">
-        {/* Fondo con efecto de brillo */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] -z-10"></div>
         
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800 bg-slate-900/50 text-xs font-medium text-blue-400 mb-6 backdrop-blur-sm">

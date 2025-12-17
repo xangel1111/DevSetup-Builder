@@ -1,23 +1,23 @@
 import { useState } from 'react';
 import { useStore } from '../../../store/useStore';
 import type { Category } from '../../../types';
-import { Trash2, Plus } from 'lucide-react'; // Quitamos Search que no se usa
+import { Trash2, Plus } from 'lucide-react';
 import { ImageUpload } from './ImageUpload';
+import { toast } from 'sonner';
 
 export const ProductManager = () => {
   const { products, addProduct, deleteProduct } = useStore();
   
-  // 1. SEPARAMOS LOS ESTADOS PARA EVITAR BUGS
-  const [isOpen, setIsOpen] = useState(false); // Controla si se ve el form
-  const [isSubmitting, setIsSubmitting] = useState(false); // Controla el loading del botón
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [form, setForm] = useState({ name: '', price: '', category: 'monitor', image: '' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.image) return alert("Please upload an image first");
+    if (!form.image) return toast.caller("Please upload an image first");
 
-    setIsSubmitting(true); // Activa loading
+    setIsSubmitting(true);
     await addProduct({
         name: form.name,
         price: Number(form.price),
@@ -25,9 +25,10 @@ export const ProductManager = () => {
         image: form.image,
         description: 'New Item from Admin'
     });
-    setIsSubmitting(false); // Desactiva loading
-    setIsOpen(false); // Cierra el formulario
-    setForm({ name: '', price: '', category: 'monitor', image: '' }); // Limpia
+    setIsSubmitting(false);
+    setIsOpen(false);
+    setForm({ name: '', price: '', category: 'monitor', image: '' });
+    toast.success('Product added successfully!');
   };
 
   return (
@@ -37,7 +38,6 @@ export const ProductManager = () => {
         
         <div className="flex gap-2 w-full sm:w-auto">
           <button 
-            // 2. Aquí usamos isOpen para abrir/cerrar
             onClick={() => setIsOpen(!isOpen)}
             className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition"
           >
@@ -46,7 +46,6 @@ export const ProductManager = () => {
         </div>
       </div>
 
-      {/* 3. Usamos isOpen para mostrar el formulario */}
       {isOpen && (
         <div className="p-6 bg-slate-950/50 border-b border-slate-800 animate-in slide-in-from-top-2">
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 items-end">
@@ -74,18 +73,15 @@ export const ProductManager = () => {
                     </select>
                 </div>
 
-                {/* --- AQUÍ VA EL BLOQUE QUE ME PEDISTE --- */}
                 <div className="flex flex-col gap-2 min-w-[140px]">
                    {form.image && (
                      <div className="relative group">
-                        {/* CAMBIO AQUÍ: h-10 por h-32, y agregué rounded-lg shadow-sm para que se vea mejor grande */}
                         <img src={form.image} alt="Preview" className="h-32 w-full object-cover rounded-lg border border-slate-700 shadow-sm" />
                      </div>
                    )}
                    <ImageUpload onUpload={(url) => setForm({ ...form, image: url })} />
                 </div>
 
-                {/* Botón Submit actualizado */}
                 <button 
                     disabled={isSubmitting} 
                     className="bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 py-2.5 rounded-lg text-sm font-medium w-full sm:w-auto"
@@ -98,10 +94,8 @@ export const ProductManager = () => {
         </div>
       )}
 
-      {/* Tabla (Sin cambios) */}
       <div className="overflow-x-auto">
         <table className="w-full text-sm text-left">
-          {/* ... (resto de la tabla igual que antes) ... */}
           <thead className="text-xs text-slate-400 uppercase bg-slate-950/50">
             <tr>
               <th className="px-6 py-4">Product Name</th>

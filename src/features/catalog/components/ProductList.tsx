@@ -1,5 +1,5 @@
 import { useStore } from '../../../store/useStore';
-import { ProductCard } from './ProductCard'; // Importación relativa dentro de la feature
+import { ProductCard } from './ProductCard';
 
 export const ProductList = () => {
   const { products, isLoading } = useStore();

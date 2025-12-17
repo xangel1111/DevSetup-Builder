@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Image as ImageIcon, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface Props {
   onUpload: (url: string) => void;
@@ -32,10 +33,10 @@ export const ImageUpload = ({ onUpload }: Props) => {
       const data = await res.json();
       console.log('Imagen subida:', data.secure_url);
 
-      onUpload(data.secure_url); // Devolvemos la URL al componente padre
+      onUpload(data.secure_url);
     } catch (error) {
       console.error('Error subiendo imagen:', error);
-      alert('Error al subir la imagen');
+      toast.error('Something went wrong');
     } finally {
       setUploading(false);
     }

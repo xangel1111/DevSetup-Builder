@@ -15,7 +15,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
       <div className="absolute -inset-px bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-10 blur transition duration-500 -z-10"></div>
 
       <div className="aspect-video mb-4 overflow-hidden rounded-lg bg-slate-950 flex items-center justify-center relative">
-         {/* Placeholder elegante para imágenes rotas o mientras carga */}
+         {/* Placeholder */}
         <img 
           src={product.image} 
           alt={product.name}
