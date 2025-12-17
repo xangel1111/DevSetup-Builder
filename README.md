@@ -8,12 +8,9 @@
 [![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=3ECF8E)](https://supabase.com/)
 [![Zustand](https://img.shields.io/badge/State-Zustand-orange?style=for-the-badge)](https://github.com/pmndrs/zustand)
 
----
-
 ## 🔗 Live Demo
-👉 **[Ver Proyecto Desplegado Aquí](https://dev-setup-builder.vercel.app)**
 
----
+**[Ver Proyecto Desplegado Aquí](https://dev-setup-builder.vercel.app)**
 
 ## 💡 Sobre el Proyecto
 
@@ -29,7 +26,6 @@ El objetivo principal fue implementar una **arquitectura escalable**, separar la
 * **🗄️ Persistencia de Datos:** Conexión con **Supabase (PostgreSQL)** para sincronización de inventario.
 * **🎨 UI/UX Moderna:** Diseño "Dark Mode First" inspirado en Vercel, utilizando TailwindCSS y componentes modulares.
 
----
 
 ## 🏗️ Arquitectura del Sistema
 
@@ -42,7 +38,6 @@ La aplicación sigue un flujo **Serverless**. El frontend interactúa directamen
 * **Feature-Based Architecture:** En lugar de agrupar archivos por tipo (components, hooks), el proyecto está organizado por dominios (`features/catalog`, `features/admin`, `features/budget`). Esto facilita la escalabilidad y el mantenimiento.
 * **Zustand vs Context/Redux:** Se eligió Zustand por su simplicidad, menor boilerplate y facilidad para manejar actualizaciones de estado asíncronas fuera del ciclo de renderizado de React.
 
----
 
 ## 🛠️ Stack Tecnológico
 
@@ -55,7 +50,6 @@ La aplicación sigue un flujo **Serverless**. El frontend interactúa directamen
 * **Iconos:** Lucide React.
 * **Notificaciones:** Sonner.
 
----
 
 ## 📂 Estructura del Proyecto
 
@@ -96,7 +90,6 @@ VITE_SUPABASE_URL=tu_supabase_url
 VITE_SUPABASE_KEY=tu_supabase_anon_key
 VITE_CLOUDINARY_CLOUD_NAME=tu_cloud_name
 VITE_CLOUDINARY_PRESET=tu_upload_preset
-
 ```
 
 ### Ejecutar:
