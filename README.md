@@ -72,7 +72,7 @@ src/
 
 
 ```Bash
-git clone [https://github.com/TU_USUARIO/devsetup-builder.git](https://github.com/TU_USUARIO/devsetup-builder.git)
+git clone https://github.com/xangel1111/DevSetup-Builder
 cd devsetup-builder
 ```
 
